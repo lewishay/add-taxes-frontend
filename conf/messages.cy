@@ -118,3 +118,13 @@ otherTaxes.option1 = WELSH NEEDED HERE
 otherTaxes.option2 = WELSH NEEDED HERE
 otherTaxes.checkYourAnswersLabel = WELSH NEEDED HERE
 otherTaxes.error.required = WELSH NEEDED HERE
+
+#######################################################
+##  RegisterEmployers
+#######################################################
+registerEmployers.title = WELSH NEEDED HERE
+registerEmployers.heading = WELSH NEEDED HERE
+registerEmployers.option1 = WELSH NEEDED HERE
+registerEmployers.option2 = WELSH NEEDED HERE
+registerEmployers.checkYourAnswersLabel = WELSH NEEDED HERE
+registerEmployers.error.required = WELSH NEEDED HERE

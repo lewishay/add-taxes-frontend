@@ -21,8 +21,8 @@ sealed trait Enrolments
 object Enrolments {
 
   case object RebatedOils extends WithName("HMCE-RO") with Enrolments
-
   case object TiedOils extends WithName("HMCE-TO") with Enrolments
+  case object EPAYE extends WithName("IR-PAYE") with Enrolments
 
   case object AlcoholAndTobaccoWarehousingDeclarations extends WithName("HMCE-ATWD-ORG") with Enrolments
 
@@ -45,6 +45,6 @@ object Enrolments {
   val values: Set[Enrolments] = Set(
     RebatedOils, TiedOils, AlcoholAndTobaccoWarehousingDeclarations, AlcoholWholesalerRegistrationScheme,
     AlcoholWholesalerRegistrationScheme, AutomaticExchangeOfInformation, Charities, MachineGamingDuty, GeneralBetting,
-    PoolBetting, RemoteGaming, FulfilmentHouseDueDiligenceSchemeIntegration
+    PoolBetting, RemoteGaming, FulfilmentHouseDueDiligenceSchemeIntegration, EPAYE
   )
 }

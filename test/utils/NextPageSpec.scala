@@ -18,6 +18,9 @@ package utils
 
 import base.SpecBase
 import models.OtherTaxes
+import models.RegisterEmployers
+import models.RegisterEmployers.EPAYE
+import models.other.oil.{HaveYouRegisteredForRebatedOils, HaveYouRegisteredForTiedOils}
 import models.other.oil.SelectAnOilService.{RebatedOilsEnquiryService, TiedOilsEnquiryService}
 import models.other.oil.{HaveYouRegisteredForRebatedOils, HaveYouRegisteredForTiedOils}
 import models.wrongcredentials.FindingYourAccount
@@ -121,11 +124,24 @@ class NextPageSpec extends SpecBase {
         s"choose-your-account?continue=%2Fbusiness-account&origin=business-tax-account&forgottenOption=$forgottenOption"
 
     behave like nextPage(NextPage.findingYourAccount, FindingYourAccount.DontKnowId, governmentGatewayUrlGenerator("userId"))
-
     behave like nextPage(NextPage.findingYourAccount, FindingYourAccount.DontKnowPassword,
       governmentGatewayUrlGenerator("password"))
 
     behave like nextPage(NextPage.findingYourAccount, FindingYourAccount.DontKnowIdOrPassword,
       governmentGatewayUrlGenerator("UserIdAndPassword"))
+  }
+
+  "RegisterEmployers" when {
+    behave like nextPage(NextPage.registerEmployers,
+      RegisterEmployers.EPAYE,
+      "http://localhost:9555/enrolment-management-frontend/IR-PAYE/request-access-tax-scheme?continue=%2Fbusiness-account")
+
+    behave like nextPage(NextPage.registerEmployers,
+      RegisterEmployers.CIS,
+      "http://localhost:9020/business-account/add-tax/employer/cis")
+
+    behave like nextPage(NextPage.registerEmployers,
+      RegisterEmployers.Pensions,
+      "http://localhost:9020/business-account/add-tax/employer/pension")
   }
 }

@@ -125,3 +125,12 @@ otherTaxes.oilAndFuel = Oil and fuel
 otherTaxes.fulfilmentHouseDueDiligenceSchemeIntegration = Fulfilment House Due Diligence Scheme
 otherTaxes.error.required = Select a tax or scheme type
 otherTaxes.legend = Select a tax or scheme type
+#######################################################
+##  RegisterEmployers
+#######################################################
+registerEmployers.title = registerEmployers
+registerEmployers.heading = registerEmployers
+registerEmployers.option1 = registerEmployers Option 1
+registerEmployers.option2 = registerEmployers Option 2
+registerEmployers.checkYourAnswersLabel = registerEmployers
+registerEmployers.error.required = Please give an answer for registerEmployers

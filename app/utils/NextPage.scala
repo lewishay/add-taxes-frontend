@@ -19,6 +19,7 @@ package utils
 import controllers.other.oil.routes
 import identifiers._
 import models.OtherTaxes
+import models.RegisterEmployers
 import models.other.oil.SelectAnOilService.{RebatedOilsEnquiryService, TiedOilsEnquiryService}
 import models.other.oil.{HaveYouRegisteredForRebatedOils, HaveYouRegisteredForTiedOils, SelectAnOilService}
 import models.wrongcredentials.FindingYourAccount
@@ -30,6 +31,18 @@ trait NextPage[A, B] {
 
 
 object NextPage {
+
+  implicit val registerEmployers: NextPage[RegisterEmployersId.type,
+    RegisterEmployers] = {
+    new NextPage[RegisterEmployersId.type, RegisterEmployers] {
+      override def get(b: RegisterEmployers)(implicit urlHelper: UrlHelper): Call =
+        b match {
+          case models.RegisterEmployers.EPAYE => Call("GET", urlHelper.registerForTaxUrl(Enrolments.EPAYE))
+          case models.RegisterEmployers.CIS => Call("GET", urlHelper.businessTaxAccountLink("cis"))
+          case models.RegisterEmployers.Pensions => Call("GET", urlHelper.businessTaxAccountLink("pensions"))
+        }
+     }
+  }
 
   implicit val otherTaxes: NextPage[OtherTaxesId.type,
     OtherTaxes] = {
