@@ -127,6 +127,7 @@ otherTaxes.alcoholAndTobaccoWholesalingAndWarehousing = Cyfanwerthu a warysu alc
 otherTaxes.automaticExchangeOfInformation = Cyfnewid Gwybodaeth yn Awtomatig (AEOI)
 otherTaxes.charities = Elusennau - ar gyfer ceisiadau am ad-daliadau Rhodd Cymorth
 otherTaxes.gamblingAndGaming = Betio a hapchwarae
+otherTaxes.childTrustFund = Cronfa Ymddiriedolaeth Plant i ddarparwyr
 otherTaxes.housingAndLand = Tai a thir
 otherTaxes.importsExports = Mewnforion ac allforion
 otherTaxes.oilAndFuel = Olew a thanwydd
@@ -616,6 +617,7 @@ whichVATServicesToAdd.title = Pa wasanaeth TAW ydych eisiau ei ychwanegu?
 whichVATServicesToAdd.heading = Pa wasanaeth TAW ydych eisiau ei ychwanegu?
 whichVATServicesToAdd.vat = TAW
 whichVATServicesToAdd.ecsales = Rhestr Gwerthiannau yn y GE, Rhoi gwybod am werthiannau a wnaed i gyflenwyr yr UE sydd wedi cofrestru ar gyfer TAW
+whichVATServicesToAdd.giant = Ymddiriedolaethau Gwybodaeth Llywodraeth ac Iechyd Cenedlaethol (GIANT)
 whichVATServicesToAdd.eurefunds = Ad-daliadau yn yr UE, Gwneud cais i gael TAW y gwnaethoch ei thalu yn yr UE yn ôl
 whichVATServicesToAdd.rcsl = Rhestr Gwerthiannau Tâl Gwrthdro (RCSL), Rhoi gwybod am werthiannau sydd â TAW Tâl Gwrthdro
 whichVATServicesToAdd.moss = Gwasanaeth Un Cam (GUC), TAW ar gyfer gwasanaethau digidol a werthwyd yn yr UE
@@ -856,3 +858,74 @@ doYouNeedToStopRO.heading = A oes angen i chi roi’r gorau i ddefnyddio’r gwa
 doYouNeedToStopRO.Yes = Iawn
 doYouNeedToStopRO.No = Na, mae angen i fi ddadgofrestru o’r cynllun Ymholiadau Olew Ad-daliedig
 doYouNeedToStopRO.error.required = Dewiswch Iawn os oes angen i chi roi’r gorau i ddefnyddio’r gwasanaeth ar-lein Olew Ad-daliedig
+
+#######################################################
+##  DoYouNeedToStopEPAYE
+#######################################################
+doYouNeedToStopEPAYE.title = A yw’ch busnes wedi rhoi’r gorau i gyflogi pobl?
+doYouNeedToStopEPAYE.heading = A yw’ch busnes wedi rhoi’r gorau i gyflogi pobl?
+doYouNeedToStopEPAYE.Yes = Iawn
+doYouNeedToStopEPAYE.No = Na, mae angen i fi roi’r gorau i ddefnyddio’r gwasanaeth ar-lein TWE i gyflogwyr
+doYouNeedToStopEPAYE.error.required = Dewiswch Iawn os yw’ch busnes wedi rhoi’r gorau i gyflogi pobl
+
+#######################################################
+##  DoYouNeedToStopPSA
+#######################################################
+doYouNeedToStopPSA.title = A oes angen i chi roi’r gorau i weithredu fel gweinyddwr cynllun pensiwn?
+doYouNeedToStopPSA.heading = A oes angen i chi roi’r gorau i weithredu fel gweinyddwr cynllun pensiwn?
+doYouNeedToStopPSA.Yes = Iawn
+doYouNeedToStopPSA.No = Na, mae angen i fi roi’r gorau i ddefnyddio’r gwasanaeth ar-lein
+doYouNeedToStopPSA.error.required = Dewiswch Iawn os oes angen i chi roi’r gorau i weithredu fel gweinyddwr cynllun pensiwn
+
+#######################################################
+##  HaveYouStoppedSelfEmployment
+#######################################################
+haveYouStoppedSelfEmployment.title = A ydych wedi rhoi’r gorau i hunangyflogaeth?
+haveYouStoppedSelfEmployment.heading = A ydych wedi rhoi’r gorau i hunangyflogaeth?
+haveYouStoppedSelfEmployment.Yes = Iawn
+haveYouStoppedSelfEmployment.No = Na, mae angen i fi roi’r gorau i ddefnyddio’r gwasanaeth Hunanasesiad ar-lein
+haveYouStoppedSelfEmployment.error.required = Dewiswch Iawn os ydych wedi rhoi’r gorau i hunangyflogaeth
+
+#######################################################
+##  AreYouApprovedCTF
+#######################################################
+areYouApprovedCTF.title = Ydych chi’n ddarparwr Cronfa Ymddiriedolaeth Plant cymeradwy?
+areYouApprovedCTF.heading = Ydych chi’n ddarparwr Cronfa Ymddiriedolaeth Plant cymeradwy?
+areYouApprovedCTF.Yes = Iawn
+areYouApprovedCTF.No = Na
+areYouApprovedCTF.error.required = Dewiswch ‘Iawn’ os ydych yn ddarparwr Cronfa Ymddiriedolaeth Plant cymeradwy
+
+#######################################################
+##  WhatIsYourOrganisation
+#######################################################
+whatIsYourOrganisation.title = A yw’ch sefydliad yn ymddiriedolaeth y GIG, yn adran o’r Llywodraeth neu’n Aelwyd Frenhinol?
+whatIsYourOrganisation.heading = A yw’ch sefydliad yn ymddiriedolaeth y GIG, yn adran o’r Llywodraeth neu’n Aelwyd Frenhinol?
+whatIsYourOrganisation.Yes = Iawn
+whatIsYourOrganisation.No = Na
+whatIsYourOrganisation.error.required = Dewiswch ‘Iawn’ os yw’ch sefydliad yn ymddiriedolaeth y GIG, yn adran o’r Llywodraeth neu’n Aelwyd Frenhinol
+
+#######################################################
+##  YouDoNotNeedVAT
+#######################################################
+youDoNotNeedVAT.title = Does dim angen TAW ar gyfer Ymddiriedolaethau Gwybodaeth Llywodraeth ac Iechyd Cenedlaethol (GIANT)
+youDoNotNeedVAT.heading = Does dim angen TAW ar gyfer Ymddiriedolaethau Gwybodaeth Llywodraeth ac Iechyd Cenedlaethol (GIANT)
+youDoNotNeedVAT.body = Bydd CThEM yn cysylltu â’ch sefydliad os oes angen iddo ddefnyddio’r gwasanaeth hwn.
+youDoNotNeedVAT.home = Ewch i’r hafan treth busnes
+
+#######################################################
+##  StopCorporationTax
+#######################################################
+stopCorporationTax.title = Beth sydd angen i chi’i wneud?
+stopCorporationTax.heading = Beth sydd angen i chi’i wneud?
+stopCorporationTax.stop = Rhoi’r gorau i ddefnyddio’r gwasanaeth ar-lein
+stopCorporationTax.dormant = Gwneud fy nghwmni’n segur (mae’n bosibl y bydd yn masnachu eto)
+stopCorporationTax.close = Cau fy nghwmni (ni fydd yn masnachu eto)
+stopCorporationTax.error.required = Dewiswch yr hyn sydd angen i chi ei wneud
+
+#######################################################
+##  YouNeedToBeApprovedCTF
+#######################################################
+youNeedToBeApprovedCTF.title = Mae angen i chi fod yn ddarparwr Cronfa Ymddiriedolaeth Plant cymeradwy i gyrchu’r gwasanaeth hwn
+youNeedToBeApprovedCTF.heading = Mae angen i chi fod yn ddarparwr Cronfa Ymddiriedolaeth Plant cymeradwy i gyrchu’r gwasanaeth hwn
+youNeedToBeApprovedCTF.para = Pan gewch eich cyfeirnod a’ch tocyn cychwyn, mewngofnodwch i’ch cyfrif ac ychwanegwch Gronfa Ymddiriedolaeth Plant.
+youNeedToBeApprovedCTF.continue = Gwneud cais i fod yn ddarparwr cymeradwy

@@ -28,7 +28,8 @@ class DeenrolmentProxyControllerSpec extends ControllerSpecBase {
 
   "DeenrolmentProxy Controller" must {
 
-    val enrolments = Enrolments.values - (Enrolments.AddCis, Enrolments.RebatedOils)
+    val enrolments = Enrolments.values -
+      (Enrolments.AddCis, Enrolments.PSA, Enrolments.RebatedOils, Enrolments.EPAYE, Enrolments.SA, Enrolments.CT)
 
     for (enrolment <- enrolments) {
       s"redirect to deenrolment management for $enrolment" in {
@@ -44,14 +45,42 @@ class DeenrolmentProxyControllerSpec extends ControllerSpecBase {
       val result = controller().onPageLoad(Enrolments.AddCis)(fakeRequest)
 
       status(result) mustBe SEE_OTHER
-      redirectLocation(result) mustBe Some("/business-account/cis/how-to-stop-cis")
+      redirectLocation(result) mustBe Some("/business-account/deenrol/cis/how-to-stop-cis")
     }
 
-    "redirect to how to stop cis for HMCE-RO" in {
+    "redirect to how to stop rebated oils for HMCE-RO" in {
       val result = controller().onPageLoad(Enrolments.RebatedOils)(fakeRequest)
 
       status(result) mustBe SEE_OTHER
-      redirectLocation(result) mustBe Some("/business-account/ro/how-to-stop-ro")
+      redirectLocation(result) mustBe Some("/business-account/deenrol/ro/how-to-stop-ro")
+    }
+
+    "redirect to how to stop epaye for IR-PAYE" in {
+      val result = controller().onPageLoad(Enrolments.EPAYE)(fakeRequest)
+
+      status(result) mustBe SEE_OTHER
+      redirectLocation(result) mustBe Some("/business-account/deenrol/epaye/how-to-stop-paye")
+    }
+
+    "redirect to how to stop psa for HMRC-PSA-ORG" in {
+      val result = controller().onPageLoad(Enrolments.PSA)(fakeRequest)
+
+      status(result) mustBe SEE_OTHER
+      redirectLocation(result) mustBe Some("/business-account/deenrol/psa/how-to-stop-psa")
+    }
+
+    "redirect to how to stop SA for IR-SA" in {
+      val result = controller().onPageLoad(Enrolments.SA)(fakeRequest)
+
+      status(result) mustBe SEE_OTHER
+      redirectLocation(result) mustBe Some("/business-account/deenrol/self-assessment/how-to-stop-sa")
+    }
+
+    "redirect to how to stop CT for IR-CT" in {
+      val result = controller().onPageLoad(Enrolments.CT)(fakeRequest)
+
+      status(result) mustBe SEE_OTHER
+      redirectLocation(result) mustBe Some("/business-account/deenrol/ct/how-to-stop-ct")
     }
   }
 }
