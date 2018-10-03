@@ -1,35 +1,37 @@
-// UI module (common code)
-(function (UI, $, undefined) {
-    UI.show = function (selector) {
-        $(selector).removeClass("hidden");
-    };
+$(document).ready(function() {
 
-    UI.hide = function (selector) {
-        $(selector).addClass("hidden");
-    };
 
-    UI.hideShowOnRadioButton = function(radioGroupName, buttonToAreaMap) {
-        var updateState = function(buttonMap) {
-            for (var b in buttonMap) {
-                if ($(b).is(":checked")) {
-                    UI.show($(buttonMap[b]));
-                } else {
-                    UI.hide($(buttonMap[b]));
-                }
-            }
-        };
-        // on state change handler
-        var radioGroup = $("input[name='"+radioGroupName+"']:radio");
-        radioGroup.on("change", function () {
-            updateState(buttonToAreaMap);
-        }).trigger("change");
-    };
-}(window.UI = window.UI || {}, jQuery));
+  // Details/summary polyfill from frontend toolkit
+  GOVUK.details.init()
 
-// DoYouHaveVatRegNumberPage module
-(function (DoYouHaveVATRegNumberPage, $, undefined) {
-    DoYouHaveVATRegNumberPage.init = function() {
-        UI.hideShowOnRadioButton("doYouHaveVATRegNumber",
-            { "#doYouHaveVATRegNumber-true": "#doYouHaveVATRegNumberPanel" });
+  // =====================================================
+  // Initialise show-hide-content
+  // Toggles additional content based on radio/checkbox input state
+  // =====================================================
+  var showHideContent, mediaQueryList;
+  showHideContent = new GOVUK.ShowHideContent()
+  showHideContent.init()
+
+  initRadioOptions();
+});
+
+var initRadioOptions = function () {
+  var radioOptions = $('input[type="radio"]');
+
+  radioOptions.each(function () {
+    var o = $(this).parent().next('.additional-option-block');
+    if ($(this).prop('checked')) {
+        o.show();
+    } else {
+        o.hide();
     }
-}(window.DoYouHaveVATRegNumberPage = window.DoYouHaveVATRegNumberPage || {}, jQuery));
+  });
+
+  radioOptions.on('click', function (e) {
+    $('.additional-option-block').hide();
+    var o = $(this).parent().next('.additional-option-block');
+    if (o.index() != -1) {
+        o.show();
+    }
+  });
+}

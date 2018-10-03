@@ -16,24 +16,27 @@
 
 package models.vat
 
+import play.api.libs.json.{Json, OFormat}
 import utils.{Enumerable, RadioOption, WithName}
 
-sealed trait DoYouHaveVATRegNumber
+case class DoYouHaveVATRegNumber(value: Boolean, vrn: Option[String])
 
 object DoYouHaveVATRegNumber {
 
-  case object Yes extends WithName("Yes") with DoYouHaveVATRegNumber
-  case object No extends WithName("No") with DoYouHaveVATRegNumber
+  object Yes extends DoYouHaveVATRegNumber(true, Some(""))
+  object No extends DoYouHaveVATRegNumber(false, None)
 
   val values: Set[DoYouHaveVATRegNumber] = Set(
     Yes,
     No
   )
 
-  val options: Set[RadioOption] = values.map { value =>
-    RadioOption("doYouHaveVATRegNumber", value.toString)
+  val options: Set[(String, String)] = values.map { value =>
+    ("doYouHaveVATRegNumber", value.toString)
   }
 
   implicit val enumerable: Enumerable[DoYouHaveVATRegNumber] =
     Enumerable(values.toSeq.map(v => v.toString -> v): _*)
+
+  implicit val format: OFormat[DoYouHaveVATRegNumber] = Json.format[DoYouHaveVATRegNumber]
 }

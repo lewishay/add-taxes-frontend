@@ -27,6 +27,7 @@ import uk.gov.hmrc.play.bootstrap.controller.FrontendController
 import utils.{Enumerable, Navigator}
 import forms.vat.DoYouHaveVATRegNumberFormProvider
 import identifiers.DoYouHaveVATRegNumberId
+import models.vat.DoYouHaveVATRegNumber
 import views.html.vat.doYouHaveVATRegNumber
 
 class DoYouHaveVATRegNumberController @Inject()(
@@ -52,7 +53,8 @@ class DoYouHaveVATRegNumberController @Inject()(
       .fold(
         (formWithErrors: Form[_]) =>
           BadRequest(doYouHaveVATRegNumber(appConfig, formWithErrors)(request.serviceInfoContent)),
-        (value) => Redirect(navigator.nextPage(DoYouHaveVATRegNumberId, (value, request.request.affinityGroup)))
+        (value: DoYouHaveVATRegNumber) =>
+          Redirect(navigator.nextPage(DoYouHaveVATRegNumberId, (value, request.request.affinityGroup)))
       )
   }
 }

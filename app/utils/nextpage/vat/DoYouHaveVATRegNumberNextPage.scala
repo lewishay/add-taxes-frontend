@@ -33,17 +33,13 @@ trait DoYouHaveVATRegNumberNextPage {
     : NextPage[DoYouHaveVATRegNumberId.type, DoYouHaveVATRegNumberWithRequests, Call] = {
     new NextPage[DoYouHaveVATRegNumberId.type, DoYouHaveVATRegNumberWithRequests, Call] {
       override def get(
-        b: DoYouHaveVATRegNumberWithRequests)(implicit appConfig: FrontendAppConfig, request: Request[_]): Call = {
-
-        val (serviceToAdd, affinity) = b
-
+        b: DoYouHaveVATRegNumberWithRequests)(implicit appConfig: FrontendAppConfig, request: Request[_]): Call =
         b match {
-          case (DoYouHaveVATRegNumber.Yes, _) => Call("GET", appConfig.emacEnrollmentsUrl(Enrolments.VAT))
-          case (DoYouHaveVATRegNumber.No, Some(AffinityGroup.Individual)) =>
+          case (DoYouHaveVATRegNumber(true, vrn), _) => Call("GET", appConfig.emacEnrollmentsUrl(Enrolments.VAT))
+          case (DoYouHaveVATRegNumber(false, _), Some(AffinityGroup.Individual)) =>
             vatVatRoutes.SetupNewAccountController.onPageLoad()
-          case (DoYouHaveVATRegNumber.No, _) => vatRoutes.RegisterForVATOnlineController.onPageLoad()
+          case (DoYouHaveVATRegNumber(false, _), _) => vatRoutes.RegisterForVATOnlineController.onPageLoad()
         }
-      }
     }
   }
 }

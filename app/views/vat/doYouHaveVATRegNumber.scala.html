@@ -21,8 +21,13 @@
 
 @(appConfig: FrontendAppConfig, form: Form[_])(serviceInfoContent: Html)(implicit request: Request[_], messages: Messages)
 
-@fieldSetClasses = @{
-  if(form.hasErrors && (form.errors.exists(_.args.nonEmpty))) "form-field--error" else ""
+@hiddenYesContent = {
+  <div class="additional-option-block panel panel-border-narrow">
+    @components.input_text(
+      field = form("vrn"),
+      label = messages("doYouHaveVATRegNumber.enterVrn")
+    )
+  </div>
 }
 
 @main_template(
@@ -31,43 +36,18 @@
   form = Some(form),
   serviceInfoContent = serviceInfoContent) {
 
-  <details role="group" class="form-group">
-    <summary role="button" aria-controls="details-content-0" aria-expanded="false">
-      <span class="summary">Hello</span>
-    </summary>
-    <div class="panel panel-border-narrow" id="details-content-0" aria-hidden="true">
-      <p>What's up</p>
-      <p>My friend</p>
-    </div>
-  </details>
-
   @helpers.form(action = DoYouHaveVATRegNumberController.onSubmit(), 'autoComplete -> "off", Symbol("data-journey-dynamic-radios") -> "") {
-
-    <div class="form-group">
 
       @components.error_summary(form.errors)
 
-      @components.input_radio(
+      @components.input_radio_hidden_field(
         field = form("value"),
-        legend = components.heading("doYouHaveVATRegNumber.heading").body,
-        inputs = DoYouHaveVATRegNumber.options.toSeq
+        radioOptions = DoYouHaveVATRegNumber.options.toSeq,
+        radioAdditionalInfo = Map("true" -> hiddenYesContent),
+        '_legend -> components.heading("doYouHaveVATRegNumber.heading").body,
+        '_legendClass -> "visually-hidden"
       )
 
-      <div class="panel panel-border-narrow hidden @fieldSetClasses" id="doYouHaveVATRegNumberPanel">
-        @components.input_text(
-          field = form("vrn"),
-          label = "VRN"
-        )
-      </div>
-
       @components.submit_button(gaEvent = "HaveVATRegNumber")
-
-    </div>
   }
 }
-
-<script type="text/javascript">
-  $(document).ready($(function () {
-    DoYouHaveVATRegNumberPage.init()
-  }));
-</script>

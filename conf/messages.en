@@ -982,6 +982,7 @@ doYouHaveVATRegNumber.title = Do you have a VAT registration number?
 doYouHaveVATRegNumber.heading = Do you have a VAT registration number?
 doYouHaveVATRegNumber.Yes = Yes
 doYouHaveVATRegNumber.No = No
+doYouHaveVATRegNumber.enterVrn = Enter your VAT number
 doYouHaveVATRegNumber.error.required = Select yes if you have a VAT registration number
 doYouHaveVATRegNumber.error.vrnRequired = Placeholder text
 

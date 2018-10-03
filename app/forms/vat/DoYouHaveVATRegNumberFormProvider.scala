@@ -21,7 +21,7 @@ import javax.inject.Inject
 import forms.FormErrorHelper
 import forms.mappings.Mappings
 import play.api.data.Form
-import play.api.data.Forms._
+import play.api.data.Forms.mapping
 import models.vat.DoYouHaveVATRegNumber
 import play.api.data.validation.Constraints
 import uk.gov.voa.play.form.ConditionalMappings._
@@ -29,12 +29,12 @@ import uk.gov.voa.play.form.ConditionalMappings._
 class DoYouHaveVATRegNumberFormProvider @Inject() extends FormErrorHelper with Mappings {
 
   def apply(): Form[DoYouHaveVATRegNumber] = Form(
-    tuple(
-      "value" -> enumerable[DoYouHaveVATRegNumber]("doYouHaveVATRegNumber.error.required"),
+    mapping(
+      "value" -> boolean("doYouHaveVATRegNumber.error.required"),
       "vrn" -> mandatoryIf(
         isEqual("value", "Yes"),
         text("doYouHaveVATRegNumber.error.vrnRequired").verifying(Constraints.nonEmpty)
       )
-    )
+    )(DoYouHaveVATRegNumber.apply)(DoYouHaveVATRegNumber.unapply)
   )
 }
