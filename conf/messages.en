@@ -983,6 +983,7 @@ doYouHaveVATRegNumber.heading = Do you have a VAT registration number?
 doYouHaveVATRegNumber.Yes = Yes
 doYouHaveVATRegNumber.No = No
 doYouHaveVATRegNumber.error.required = Select yes if you have a VAT registration number
+doYouHaveVATRegNumber.error.vrnRequired = Placeholder text
 
 #######################################################
 ##  EnterSAUTR

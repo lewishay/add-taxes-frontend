@@ -19,25 +19,55 @@
 @import controllers.vat.routes._
 @import models.vat.DoYouHaveVATRegNumber
 
-
 @(appConfig: FrontendAppConfig, form: Form[_])(serviceInfoContent: Html)(implicit request: Request[_], messages: Messages)
 
-@main_template(
-    title = messages("doYouHaveVATRegNumber.title"),
-    appConfig = appConfig,
-    form = Some(form),
-    serviceInfoContent = serviceInfoContent) {
-
-    @helpers.form(action = DoYouHaveVATRegNumberController.onSubmit(), 'autoComplete -> "off", Symbol("data-journey-dynamic-radios") -> "") {
-
-        @components.error_summary(form.errors)
-
-        @components.input_radio(
-            field = form("value"),
-            legend = components.heading("doYouHaveVATRegNumber.heading").body,
-            inputs = DoYouHaveVATRegNumber.options.toSeq
-        )
-
-        @components.submit_button(gaEvent = "HaveVATRegNumber")
-    }
+@fieldSetClasses = @{
+  if(form.hasErrors && (form.errors.exists(_.args.nonEmpty))) "form-field--error" else ""
 }
+
+@main_template(
+  title = messages("doYouHaveVATRegNumber.title"),
+  appConfig = appConfig,
+  form = Some(form),
+  serviceInfoContent = serviceInfoContent) {
+
+  <details role="group" class="form-group">
+    <summary role="button" aria-controls="details-content-0" aria-expanded="false">
+      <span class="summary">Hello</span>
+    </summary>
+    <div class="panel panel-border-narrow" id="details-content-0" aria-hidden="true">
+      <p>What's up</p>
+      <p>My friend</p>
+    </div>
+  </details>
+
+  @helpers.form(action = DoYouHaveVATRegNumberController.onSubmit(), 'autoComplete -> "off", Symbol("data-journey-dynamic-radios") -> "") {
+
+    <div class="form-group">
+
+      @components.error_summary(form.errors)
+
+      @components.input_radio(
+        field = form("value"),
+        legend = components.heading("doYouHaveVATRegNumber.heading").body,
+        inputs = DoYouHaveVATRegNumber.options.toSeq
+      )
+
+      <div class="panel panel-border-narrow hidden @fieldSetClasses" id="doYouHaveVATRegNumberPanel">
+        @components.input_text(
+          field = form("vrn"),
+          label = "VRN"
+        )
+      </div>
+
+      @components.submit_button(gaEvent = "HaveVATRegNumber")
+
+    </div>
+  }
+}
+
+<script type="text/javascript">
+  $(document).ready($(function () {
+    DoYouHaveVATRegNumberPage.init()
+  }));
+</script>

@@ -25,12 +25,9 @@ import play.api.i18n.{I18nSupport, MessagesApi}
 import play.api.mvc.Call
 import uk.gov.hmrc.play.bootstrap.controller.FrontendController
 import utils.{Enumerable, Navigator}
-
 import forms.vat.DoYouHaveVATRegNumberFormProvider
 import identifiers.DoYouHaveVATRegNumberId
 import views.html.vat.doYouHaveVATRegNumber
-
-import scala.concurrent.Future
 
 class DoYouHaveVATRegNumberController @Inject()(
   appConfig: FrontendAppConfig,
