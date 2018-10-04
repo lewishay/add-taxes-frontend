@@ -16,33 +16,32 @@
 
 package utils.nextpage.vat
 
-import models.vat.DoYouHaveVATRegNumber
 import uk.gov.hmrc.auth.core.AffinityGroup
 import utils.NextPage
 import utils.nextpage.NextPageSpecBase
 
-class DoYouHaveVATRegNumberNextPageSpec extends NextPageSpecBase {
+class WhatIsYourVATRegNumberNextPageSpec extends NextPageSpecBase {
 
   val affinityGroupOrganisation = Some(AffinityGroup.Organisation)
   val affinityGroupIndividual = Some(AffinityGroup.Individual)
 
-  "doYouHaveVATRegNumber" when {
+  "whatIsYourVATRegNumber" when {
     behave like nextPage(
-      NextPage.doYouHaveVATRegNumber,
-      (DoYouHaveVATRegNumber.Yes, None),
-      "/business-account/add-tax/vat/what-is-your-vrn"
+      NextPage.whatIsYourVATRegNumber,
+      (true, "999999999", affinityGroupIndividual),
+      "http://localhost:9566/vat-through-software/sign-up/claim-subscription/999999999"
     )
 
     behave like nextPage(
-      NextPage.doYouHaveVATRegNumber,
-      (DoYouHaveVATRegNumber.No, affinityGroupOrganisation),
+      NextPage.whatIsYourVATRegNumber,
+      (false, "999999999", affinityGroupIndividual),
+      "http://localhost:9555/enrolment-management-frontend/HMCE-VATDEC-ORG/request-access-tax-scheme?continue=%2Fbusiness-account"
+    )
+
+    behave like nextPage(
+      NextPage.whatIsYourVATRegNumber,
+      (true, "999999999", affinityGroupOrganisation),
       "/business-account/add-tax/vat/register-online"
-    )
-
-    behave like nextPage(
-      NextPage.doYouHaveVATRegNumber,
-      (DoYouHaveVATRegNumber.No, affinityGroupIndividual),
-      "/business-account/add-tax/vat/registered/no"
     )
   }
 }

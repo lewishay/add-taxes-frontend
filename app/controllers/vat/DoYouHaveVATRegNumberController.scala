@@ -30,8 +30,6 @@ import forms.vat.DoYouHaveVATRegNumberFormProvider
 import identifiers.DoYouHaveVATRegNumberId
 import views.html.vat.doYouHaveVATRegNumber
 
-import scala.concurrent.Future
-
 class DoYouHaveVATRegNumberController @Inject()(
   appConfig: FrontendAppConfig,
   override val messagesApi: MessagesApi,
